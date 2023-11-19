@@ -50,8 +50,8 @@ const Cart: React.FC<CartProps> = () => {
           <Counter count={quantity} onIncrement={incrementQuantityHandler} onDecrement={decrementQuantityHandler}/>
           <Text style={styles.itemPrice}>${formatPrice(price * quantity)}</Text>
         </View>
-        <TouchableOpacity style={{alignItems: 'flex-end'}} onPress={removeFromCartHandler}>
-          <Text style={styles.removeButton}>Remove</Text>
+        <TouchableOpacity style={styles.removeButton} onPress={removeFromCartHandler}>
+          <Text style={styles.removeButtonText}>Remove</Text>
         </TouchableOpacity>
       </View>
     );
@@ -70,7 +70,7 @@ const Cart: React.FC<CartProps> = () => {
             keyExtractor={(item) => item.id.toString()}
           />
           <View style={styles.totalContainer}>
-            <Text style={styles.totalText}>Total: ${totalAmount.toFixed(2)}</Text>
+            <Text style={styles.totalText}>Total: ${formatPrice(totalAmount)}</Text>
             <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
               <Text style={styles.checkoutText}>Proceed to Checkout</Text>
             </TouchableOpacity>
@@ -113,6 +113,9 @@ const styles = StyleSheet.create({
       marginHorizontal: 10
     },
     removeButton: {
+      alignItems: 'flex-end'
+    },
+    removeButtonText: {
       color: 'red', 
       marginLeft: 10
     },
