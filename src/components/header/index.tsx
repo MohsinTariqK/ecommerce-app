@@ -18,9 +18,9 @@ const Header: React.FC<HeaderProps> = ({ title, navigation }) => {
   return (
     <View style={styles.header}>
       <Text style={styles.title}>{title}</Text>
-      <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={handleCartPress}>
+      <TouchableOpacity style={styles.cartButton} onPress={handleCartPress}>
         <Text style={styles.buttonText}>Cart</Text>
-        {cartItems.length > 0 && <Text style={{ backgroundColor: 'red', borderRadius: 20, padding: 2, marginHorizontal: 5, color: 'white'}}> {cartItems.length} </Text>}
+        {cartItems.length > 0 && <Text style={styles.cartItemCountBadge}> {cartItems.length} </Text>}
       </TouchableOpacity>
     </View>
   );
@@ -41,6 +41,17 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#fff'
+  },
+  cartButton: {
+    flexDirection: 'row', 
+    alignItems: 'center'
+  },
+  cartItemCountBadge: { 
+    backgroundColor: 'red', 
+    borderRadius: 20, 
+    padding: 2, 
+    marginHorizontal: 5, 
+    color: 'white'
   }
 });
 
